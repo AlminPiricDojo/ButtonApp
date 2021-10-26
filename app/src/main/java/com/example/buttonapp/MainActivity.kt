@@ -17,19 +17,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        myViewModel.getNumber().observe(this, {
+            number -> numberTxt.text = number.toString()
+        })
+
         numberTxt = findViewById(R.id.tvNumber)
-        numberTxt.text = myViewModel.number.toString()
+//        numberTxt.text = myViewModel.number.toString()
         minusBtn = findViewById(R.id.btnMinus)
         plusBtn = findViewById(R.id.btnPlus)
 
         minusBtn.setOnClickListener {
             myViewModel.updateNumber(false)
-            numberTxt.text = myViewModel.number.toString()
+//            numberTxt.text = myViewModel.number.toString()
         }
 
         plusBtn.setOnClickListener {
             myViewModel.updateNumber(true)
-            numberTxt.text = myViewModel.number.toString()
+//            numberTxt.text = myViewModel.number.toString()
         }
     }
 
